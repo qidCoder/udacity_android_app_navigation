@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
+import androidx.navigation.Navigator
+import androidx.navigation.findNavController
 import com.example.androidnavigation.databinding.FragmentTitleBinding
 
 //
@@ -44,6 +47,15 @@ class TitleFragment : Fragment() {
             container,
             false
         )
+
+        // create click listener to navigate to the game screen
+        binding.playButton.setOnClickListener { view: View ->
+            // find an instance of the nav controller for the navHostFragment
+            val navController = view.findNavController()
+
+            // now we can navigate to the game fragment
+            navController.navigate(R.id.action_titleFragment_to_gameFragment)
+        }
 
         return binding.root
     }
