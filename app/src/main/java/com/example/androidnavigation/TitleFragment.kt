@@ -28,9 +28,11 @@ class TitleFragment : Fragment() {
         )
 
         // create click listener to navigate to the game screen
-        binding.playButton.setOnClickListener (
-            Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_gameFragment)
-        )
+        binding.playButton.setOnClickListener { view ->
+            // use the NavController to navigate to the game screen
+            view.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToGameFragment())
+
+        }
 
         // tell Android we will have a menu associated with our Title fragment
         setHasOptionsMenu(true)
